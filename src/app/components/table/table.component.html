@@ -1,0 +1,24 @@
+<div class="search-container">
+  <label for="" class="search-container__label">Search: </label>
+  <input type="text" class="search-container__input" [(ngModel)]="searchString">
+</div>
+
+<table>
+  <tr>
+    <th *ngFor="let field of dataFields"
+      [ngClass]="{
+        'right-align': shouldRightAlign(data[0][field]),
+        'ascending': sortField === field && ascending,
+        'descending': sortField === field && !ascending}"
+      (click)="setSort(field)"
+    >{{headers[field]}}</th>
+  </tr>
+  <tr *ngFor="let item of (data | filter: searchString | sort: sortField:ascending)"
+    (click)="selectItem(item)"
+    [ngClass]="{'selected': selected == item}">
+    <td *ngFor="let field of dataFields"
+      [ngClass]="{'right-align': shouldRightAlign(item[field])}">
+      {{item[field]}}
+    </td>
+  </tr>
+</table>

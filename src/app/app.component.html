@@ -1,3 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<div class="main__outer-container">
+  <app-header class="main__header"></app-header>
+
+  <div class="main__inner-container">
+    <app-sidebar class="main__sidebar"></app-sidebar>
+    <div class="main__content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

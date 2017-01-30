@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/scss/_normalize';
+@import './assets/scss/_variables';
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.5;
+    color: $primary-text-color;
+}
+
+body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

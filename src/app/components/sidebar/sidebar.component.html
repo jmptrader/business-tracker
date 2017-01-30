@@ -1,0 +1,8 @@
+<div class="sidebar__menu-items">
+  <app-sidebar-item *ngFor="let menu of menus"
+      class="sidebar__menu-item"
+      [name]="menu.name"
+      [icon]="menu.icon"
+      (click)="navigate(menu.link)"
+      [title]="menu.name"></app-sidebar-item>
+</div>

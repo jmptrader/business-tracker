@@ -1,0 +1,91 @@
+@import '../../../assets/scss/_variables';
+
+.search-container {
+    margin-bottom: 1rem;
+}
+
+table {
+    border-spacing: 0;
+}
+
+tr {
+    cursor: pointer;
+
+    &:nth-of-type(2n+1) {
+        background: $divider-color;
+    }
+    
+    &.selected {
+        background: $primary-color-light;
+    }
+}
+
+th {
+    text-align: left;
+    padding: .25rem 1rem;
+    position: relative;
+
+    $arrow-height: .45rem;
+    $arrow-width: .35rem;
+    $arrow-color: #222;
+    $arrow-offset: 1rem;
+
+    user-select: none;
+    cursor: pointer;
+
+    background: $primary-color;
+
+    &.ascending, &.descending {
+        background: $primary-color-dark;
+
+        &:before {
+            content: ' ';
+            position: absolute;
+            top: 50%;
+            height: 0;
+            width: 0;
+            border-left: $arrow-width solid transparent;
+            border-right: $arrow-width solid transparent;
+        }
+    }
+
+    &.right-align {
+        padding-left: 2rem;
+    
+        &:before {
+            left: $arrow-offset;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &:not(.right-align) {
+        padding-right: 2rem;
+
+        &:before {
+            right: $arrow-offset;
+            transform: translate(50%, -50%);
+        }
+    }
+
+    &.ascending {
+
+        &:before {
+            border-top: $arrow-height solid $arrow-color;
+        }
+    }
+
+    &.descending {
+
+        &:before {
+            border-bottom: $arrow-height solid $arrow-color;
+        }
+    }
+}
+
+td {
+    padding: .5rem 1rem;
+}
+
+.right-align {
+    text-align: right;
+}
