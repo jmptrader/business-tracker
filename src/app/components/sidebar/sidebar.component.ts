@@ -11,22 +11,22 @@ export class SidebarComponent implements OnInit {
   menus = [
     {
       name: 'Orders',
-      icon: 'http://placehold.it/60/60',
+      icon: '',
       link: '/orders'
     },
     {
       name: 'Products',
-      icon: 'http://placehold.it/60/60',
+      icon: '',
       link: '/products'
     },
     {
       name: 'Shipping',
-      icon: 'http://placehold.it/60/60',
+      icon: '',
       link: '/shipping'
     },
     {
       name: 'Companies',
-      icon: 'http://placehold.it/60/60',
+      icon: '',
       link: '/companies'
     }
   ];

@@ -1,4 +1,5 @@
-@import '../../../assets/scss/_variables.scss';
+@import '../../../assets/scss/_variables';
+@import '../../../assets/scss/_icons';
 
 .sidebar-item__container {
   display: flex;
@@ -7,12 +8,28 @@
 
   .icon {
     flex: 0;
+    font-family: "Icons";
+    font-size: 2.5rem;
+    color: white;//$primary-color;
+    margin-bottom: -.5rem;
+    transition: color .1s ease-out;
   }
 
   .name {
     flex: 0;
     color: $primary-color-text;
     font-size: .8rem;
-    margin-top: .1rem;
+    transition: color .1s ease-out;
+  }
+
+  &:hover {
+
+    .name {
+      color: $accent-color;
+    }
+
+    .icon {
+      color: $accent-color;
+    }
   }
 }

@@ -6,86 +6,131 @@
 
 table {
     border-spacing: 0;
+    border-collapse: collapse;
+    border-top: 1px solid $primary-color-dark;
+    border-bottom: 1px solid $primary-color;
+}
+
+thead {
+    background: $primary-color;
+    color: $primary-color-text;
+
+    th {
+        // text-align: left;
+        padding: .25rem 1.5rem;
+        position: relative;
+        border: 1px solid $primary-color-dark;
+
+        $arrow-height: .45rem;
+        $arrow-width: .35rem;
+        $arrow-color: #222;
+        $arrow-offset: 1rem;
+
+        user-select: none;
+        cursor: pointer;
+
+        transition: background .1s ease-out, color .1s ease-out;
+
+        &:hover {
+            background: darken($primary-color-dark, 5);
+        }
+
+        &.ascending, &.descending {
+            background: $primary-color-dark;
+
+            &:before {
+                content: ' ';
+                position: absolute;
+                top: 50%;
+                height: 0;
+                width: 0;
+                border-left: $arrow-width solid transparent;
+                border-right: $arrow-width solid transparent;
+            }
+        }
+
+        &.right-align {
+            padding-left: 2rem;
+        
+            &:before {
+                left: $arrow-offset;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        &:not(.right-align) {
+            padding-right: 2rem;
+
+            &:before {
+                right: $arrow-offset;
+                transform: translate(50%, -50%);
+            }
+        }
+
+        &.ascending {
+
+            &:before {
+                border-top: $arrow-height solid $arrow-color;
+            }
+        }
+
+        &.descending {
+
+            &:before {
+                border-bottom: $arrow-height solid $arrow-color;
+            }
+        }
+    }
+}
+
+tbody {
+    background: white;
+
+    tr {
+
+        &:nth-of-type(2n) {
+            background: lighten($light-color, 3);
+        }
+
+        &:hover {
+            background: $primary-color-light;
+        }
+
+        &.selected {
+            background: $accent-color;
+            color: $primary-color-text;
+            
+            td {
+                border-color: $accent-color;
+
+                &:first-of-type {
+                    border-left-color: $primary-color;
+                }
+
+                &:last-of-type {
+                    border-right-color: $primary-color;
+                }
+            }
+        }
+    }
+    
+    td {
+        padding: .5rem 1.5rem;
+        border-left: 1px solid $primary-color;
+        border-right: 1px solid $primary-color;
+        transition: border-color .1s ease-out;
+    }
 }
 
 tr {
     cursor: pointer;
-
-    &:nth-of-type(2n+1) {
-        background: $divider-color;
-    }
-    
-    &.selected {
-        background: $primary-color-light;
-    }
+    transition: background .1s ease-out, color .1s ease-out;
 }
 
-th {
+th, td {
     text-align: left;
-    padding: .25rem 1rem;
-    position: relative;
-
-    $arrow-height: .45rem;
-    $arrow-width: .35rem;
-    $arrow-color: #222;
-    $arrow-offset: 1rem;
-
-    user-select: none;
-    cursor: pointer;
-
-    background: $primary-color;
-
-    &.ascending, &.descending {
-        background: $primary-color-dark;
-
-        &:before {
-            content: ' ';
-            position: absolute;
-            top: 50%;
-            height: 0;
-            width: 0;
-            border-left: $arrow-width solid transparent;
-            border-right: $arrow-width solid transparent;
-        }
-    }
 
     &.right-align {
-        padding-left: 2rem;
-    
-        &:before {
-            left: $arrow-offset;
-            transform: translate(-50%, -50%);
-        }
+        text-align: right;
     }
-
-    &:not(.right-align) {
-        padding-right: 2rem;
-
-        &:before {
-            right: $arrow-offset;
-            transform: translate(50%, -50%);
-        }
-    }
-
-    &.ascending {
-
-        &:before {
-            border-top: $arrow-height solid $arrow-color;
-        }
-    }
-
-    &.descending {
-
-        &:before {
-            border-bottom: $arrow-height solid $arrow-color;
-        }
-    }
-}
-
-td {
-    padding: .5rem 1rem;
-}
-
-.right-align {
-    text-align: right;
 }
